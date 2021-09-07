@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Sidebar Menu  | CodingLab </title>
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/css/estilos.css">
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+   <style>
+ 
+   </style>
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus icon'></i>
+        <div class="logo_name">Empresa</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+          <i class='bx bx-search' ></i>
+         <input type="text" placeholder="Search...">
+         <span class="tooltip">Buscar</span>
+      </li>
+      
+      <li>
+       <a href="http://localhost:3000/empleados2">
+         <i class='bx bx-user' ></i>
+         <span class="links_name">Empleados</span>
+       </a>
+       <span class="tooltip">Gestión Empleados</span>
+     </li>
+  
+     <li class="profile">
+         <div class="profile-details">
+           <img src="/images/profile.jpg" >
+           <div class="name_job">
+             <div class="name">Prem Shahi</div>
+             <div class="job">Web designer</div>
+           </div>
+         </div> 
+         <i class='bx bx-log-out' id="log_out" ></i>
+     </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    
+      <div class="titlePage">
+        <h1>Gestión Empleados</h1>
+      </div>    
+      <div class="grid">
+        
+        <div class="btnAdd">
+          <a title="Agregar nuevo empledo" href="http://localhost:3000/gestion-empleado/"><i class='bx bxs-user-plus' ></i></a>
+        </div>
+        <div class="buscador">
+          <input id="InpBuscar" type="text" placeholder="Buscar por ">
+          <small>nombres, apellidos, cédula y rol</small>
+        </div>
+      </div>
+      <div class="table">
+        <table>
+          <tr>
+            <th>Acciones</th>
+            <th>Cédula</th>
+            <th>Rol</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Correo</th>
+            <th>Proceso</th>
+            <th>Modalidad</th>
+            <th>Puesto</th>
+            <th>Lugar de Trabajo</th>
+            <th>Estado</th> 
+           </tr>
+           <tbody id="tbody">
+            <% for(var i=0;i < usu.length ;i++){ %>
+              
+              <tr>
+                <td class="acciones"><a title="Editar Empleado" href="http://localhost:3000/gestion-empleado/<%=usu[i]._id%>"><i class='bx bx-edit'></i></a>
+                  <a title="Solicitud Vacaciones" href="http://localhost:3000/solicitud_vacaciones/<%=usu[i]._id%>"><i class='bx bxs-file-doc' ></i></a>
+                </td>
+                <td class="Capitalize"><%=usu[i].cedula%></td>
+                <td class="Capitalize"><%=usu[i].idRoles%></td>
+                <td class="Capitalize"><%=usu[i].nombres%></td>
+                <td class="Capitalize"><%=usu[i].apellidos%></td>
+                <td class="Capitalize"><%=usu[i].correo%></td>
+                <td class="Capitalize"><%=usu[i].proceso%></td>
+                <td class="Capitalize"><%=usu[i].modalidad%></td>
+                <td class="Capitalize"><%=usu[i].puesto%></td>
+                <td class="Capitalize"><%=usu[i].l_trabajo%></td>
+                <td class="Capitalize"style="text-align: center;"><%if(usu[i].estado=='1'){%><i title="Empleado Activo" class='cGreen bx bx-checkbox-checked' ></i><%}else{%><i title="Empleado Inactivo"  class='cRed bx bx-x-circle' ></i><%}%></td>
+              </tr>
+              <% }%>
+           </tbody>
+         
+        </table>
+      </div>
+    
+    
+  </section>
+
+  <script  src="/js/estilos.js"></script>
+  
+  
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $( function() {
+      $( document ).tooltip();
+    } );
+    
+    </script>
+  </body>
+  </html>
+  

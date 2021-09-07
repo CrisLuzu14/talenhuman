@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Responsive Sidebar Menu | CodingLab </title>
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bxl-c-plus-plus icon'></i>
+            <div class="logo_name">Empresa</div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search...">
+                <span class="tooltip">Buscar</span>
+            </li>
+
+            <li>
+                <a href="http://localhost:3000/empleados2">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Empleados</span>
+                </a>
+                <span class="tooltip">Gestión Empleados</span>
+            </li>
+
+            <li class="profile">
+                <div class="profile-details">
+                    <img src="/images/profile.jpg">
+                    <div class="name_job">
+                        <div class="name">Prem Shahi</div>
+                        <div class="job">Web designer</div>
+                    </div>
+                </div>
+                <i class='bx bx-log-out' id="log_out"></i>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="cabPage">
+            <div class="titlePage">
+                <h1>
+                    <% if(typeof id==='undefined' ) {%>Agregar Empleado<%}else{%>Editar Empleado<%}%>
+                </h1>
+                <a title="Volver Gestión Empleaados" href="http://localhost:3000/empleados2"><i
+                        class='bx bx-left-arrow-alt'></i></a>
+            </div>
+
+        </div>
+
+        <div class="gridForm">
+            <form action="/add-empleado" method="POST">
+                <div class="rowform">
+                    <div class="input">
+                        <label for="nombres">Nombres:</label>
+                        <input type="text" placeholder="Ingrese nombres completos" id="nombres" name="nombres">
+                    </div>
+                    <div class="input">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" placeholder="Ingrese apellidos completos" id="apellidos" name="apellidos">
+                    </div>
+                </div>
+                <div class="rowform">
+                    <div class="input">
+                        <label for="cedula">Cédula:</label>
+                        <input type="text" placeholder="Ingrese cedula" id="cedula" name="cedula">
+                    </div>
+                    <div class="input">
+                        <label for="correo">correo:</label>
+                        <input type="email" placeholder="Ingrese correo" id="correo" name="correo">
+                    </div>
+                </div>
+                <div class="rowform">
+                    <div class="input">
+                        <label for="proceso">Proceso:</label>
+                        <input type="text" placeholder="Ingrese proceso" id="proceso" name="proceso">
+                    </div>
+                    <div class="input">
+                        <label for="subproceso">Subproceso:</label>
+                        <input type="text" placeholder="Ingrese subproceso" id="subproceso" name="subproceso">
+                    </div>
+                </div>
+                <div class="rowform">
+                    <div class="input">
+                        <label for="puesto">Puesto:</label>
+                        <input type="text" placeholder="Ingrese puesto" id="puesto" name="puesto">
+                    </div>
+                    <div class="input">
+                        <label for="lugar_trabajo">Lugar de Trabajo:</label>
+                        <input type="text" placeholder="Ingrese lugar_trabajo" id="lugar_trabajo" name="lugar_trabajo">
+                    </div>
+                </div>
+                <div class="rowform">
+                    <div class="input">
+                        <label for="remuneracion">Remuneración:</label>
+                        <input type="text" placeholder="Ingrese remuneracion" id="remuneracion" name="remuneracion">
+                    </div>
+                    <div class="selectForm">
+                        <label for="estado">Estado:</label>
+                        <select name="estado" id="estado">
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="rowform">
+                    <div class="input">
+                        <label for="cod_partida">Partida:</label>
+                        <input type="text" placeholder="Ingrese codigo de partida" id="cod_partida" name="cod_partida">
+                    </div>
+                    <div class="input">
+                        <label for="cedula">Cedula:</label>
+                        <input type="text" placeholder="Ingrese cedula" id="cedula" name="cedula">
+                    </div>
+                </div>
+
+                <div class="rowform">
+                    <div class="input">
+                        <label for="nombres">Nombres:</label>
+                        <input type="text" placeholder="Ingrese nombres completos" id="nombres" name="nombres">
+                    </div>
+                    <div class="input">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" placeholder="Ingrese apellidos completos" id="apellidos" name="apellidos">
+                    </div>
+                </div>
+                <div class="rowform">
+                    <div class="input">
+                        <label for="fig">F.I.G.:</label>
+                        <input type="date" placeholder="Ingrese F.I.G" id="fig" name="fig">
+                    </div>
+                    <div class="selectForm">
+                        <label for="modalidad">Modalidad:</label>
+                        <select name="modalidad" id="modalidad">
+                            <option value="nom">Nombramiento</option>
+                            <option value="nom_pro">Nombramiento Provisional</option>
+
+                        </select>
+                    </div>
+                </div>
+                
+
+                <div class="rowform">
+                    <div class="selectForm">
+                        <label for="lugar">Lugar:</label>
+                        <select name="lugar" id="lugar">
+                            <option value="1">Floreana</option>
+                            <option value="2">Guayaquil</option>
+                            <option value="3">Isabela</option>
+                            <option value="4">Quito</option>
+                            <option value="5">San Cristobal</option>
+                            <option value="6">Santa Cruz</option>
+                        </select>
+                    </div>
+                    <div class="input">
+                        <label for="denominacion">D. puesto:</label>
+                        <input type="text" placeholder="Ingrese Denominación del puesto" id="denominacion"
+                            name="denominacion">
+                    </div>
+                </div>
+                <div class="rowform">
+                    <div class="input">
+                        <label for="vig_nom">V. nombramiento:</label>
+                        <input type="date" placeholder="Ingrese fecha" id="vig_nom" name="vig_nom">
+                    </div>
+                    <div class="input">
+                        <label for="proceso">Proceso</label>
+                        <input type="text" placeholder="Ingrese proceso" id="proceso" name="proceso">
+                    </div>
+                </div>
+                <div class="rowform">
+                    <div class="input">
+                        <label for="subproceso">Subproceso:</label>
+                        <input type="text" placeholder="Ingrese subproceso" id="subproceso" name="subproceso">
+                    </div>
+                    <div class="input">
+                        <label for="lugar">Lugar de trabajo:</label>
+                        <input type="text" placeholder="Ingrese lugar de trabajo" id="lugar" name="lugar">
+                    </div>
+                </div>
+                <div class="rowform">
+                    <div class="input">
+                        <label for="puesto">Puesto:</label>
+                        <input type="text" placeholder="Ingrese puesto" id="puesto" name="puesto">
+                    </div>
+                    <div class="input">
+                        <label for="remuneracion">Remuneración:</label>
+                        <input type="text" placeholder="Ingrese RMU" id="remuneracion" name="remuneracion">
+                    </div>
+                </div>
+                <div class="rowform">
+                    <div class="input">
+                        <label for="correo">Correo Electronico:</label>
+                        <input type="email" placeholder="Ingrese correo electronico" id="correo" name="correo">
+                    </div>
+                    <div class="selectForm">
+                        <label for="estado">Estado:</label>
+                        <select name="estado" id="estado">
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="rowbutton">
+                    <div class="btnForm">
+                        <input type="submit" value="Registrar">
+                    </div>
+                </div>
+        </div>
+        </form>
+        </div>
+
+
+    </section>
+
+    <script src="/js/estilos.js"></script>
+
+</body>
+
+</html>

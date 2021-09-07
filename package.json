@@ -1,0 +1,29 @@
+{
+  "name": "vacaciones",
+  "version": "1.0.0",
+  "description": "guarda información de vacaciones",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "sta",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StalinSoriano/vacacionesPages.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StalinSoriano/vacacionesPages/issues"
+  },
+  "homepage": "https://github.com/StalinSoriano/vacacionesPages#readme"
+}
