@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+  
+    <style>
+body {
+  background-image: url("http://imgh.us/background-08_2.png");
+  font-family: "Roboto", Arial, Sans-Serif;
+  text-align: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+.iniciarsesion {
+  background-color: #ffffff;
+  border: 1px solid #12B6CC;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px #bababa;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 60px;
+  margin-bottom: 60px ;
+  padding: 70px 60px;
+}
+
+.logo {
+  margin-bottom: 45px;
+  width: 255px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 30px; 
+  
+}
+
+.formulario {
+  border: none;
+  border-bottom: 1px solid red;
+  width: 100%;
+  padding-left: 3px;
+  margin-bottom: 17px;
+  font-size: 16px;
+  color: #919191;
+  transition: all .3s ease;
+
+}
+
+.formulario:focus {
+  color: #2B549A;
+}
+.formulario:hover {
+  
+  border-bottom: 1px solid #41ABD6;
+  transition: all .3s ease;
+
+}
+
+.verpass {
+  text-align: right !important;
+}
+
+.link {
+  color: #41ABD6;
+  font-size: 13px;
+  line-height: 10px;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: #0088B2;
+}
+
+.boton1 {
+  background-color: #B1D34E;
+  color: #ffffff;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 0;
+  margin: 40px 0px 55px 0px;
+  transition: all .3s ease;
+}
+
+.boton1:hover {
+  background-color: #9DBF22;
+  transition: all .3s ease;
+}
+    </style>
+  </head>
+
+  
+  <body>
+    <form class="form-floating" action="http://localhost:3000/empleados" method="POST">
+    <div class="iniciarsesion">
+      <div>
+      <img src="/images/abg.png"  class="logo">
+      </div>
+      <div class="animated flash">
+      <p class="error">
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+      Nombre de Usuario o Contraseña incorrectos DEBE SALIR ADVERTENCIA.
+      </p>
+      </div>
+      <div>
+         <input type="text" class="formulario" class="form-control" id="floatingInput" placeholder="name@example.com" name="user">
+      </div>
+      <p class="verpass">
+      <a href="#" class="link">
+        <i class="fa fa-eye" aria-hidden="true"></i>Mostrar contraseña 
+      </a>
+      </p>
+
+      <div class="form-floating">
+        <input name="pass" type="password" class="formulario" class="form-control" id="floatingPassword" placeholder="Contraseña">
+        <label for="floatingPassword"></label>
+      </div>
+      <button class="boton1" class="btn btn-primary" type="submit">Iniciar Sesión</button>
+    
+    <a href="http://localhost:3000/recuperar_clave" class="link">¿Olvidaste tu Contraseña?</a>
+    
+      
+    </div>
+    </form>
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
