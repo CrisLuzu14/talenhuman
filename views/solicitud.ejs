@@ -140,7 +140,7 @@ tr:hover {
       </li>
 
       <li>
-        <a href="http://localhost:3000/empleados2">
+        <a href="http://localhost:3000/empleado/consultatodos">
           <i class='bx bx-user'></i>
           <span class="links_name">Empleados</span>
         </a>
@@ -155,7 +155,9 @@ tr:hover {
             <div class="job">Web designer</div>
           </div>
         </div>
-        <i class='bx bx-log-out' id="log_out"></i>
+        <a class="logout" href="http://localhost:3000/logout">
+          <i class='bx bx-log-out' id="log_out" ></i>
+        </a>
       </li>
     </ul>
   </div>
@@ -164,13 +166,14 @@ tr:hover {
     <header class="Cabecera">
       <h3> </h3>
     </header>
+    <form action="/solicitud/add-solicitud" method="POST">
     <table>
       <!-- Lo cambiaremos por CSS -->
       <P class="mipar"> SOLICITUD DE TALENTO HUMANO</P>
       <tr>
         <td colspan="7"> <img src="/images/abg.png" width="500" height="130"></td>
         <td colspan="5"> ACCION DE PERSONAL <br>
-          <span id="codigoSec"></span>
+         <input type="text" readonly id="codigoSec" value="" name="codigoSec" placeholder="se genera al guardar">
           <br> <span id="fechaAutomtica1"></span>
         </td>
       </tr>
@@ -199,8 +202,8 @@ tr:hover {
       </tr>
       <tr>
         <td style="text-align:center; " colspan="4" id="cedula1"></td>
-        <td style="text-align:center" colspan="4"><input id="fdesde" type="date" id="calendar" name="calendar"></td>
-        <td style="text-align:center" colspan="4"><input id="fhasta" type="date" id="calendar" name="calendar"></td>
+        <td style="text-align:center" colspan="4"><input  id="fdesde" type="date" id="calendar" name="fdesde"></td>
+        <td style="text-align:center" colspan="4"><input id="fhasta" type="date" id="calendar" name="fhasta"></td>
       </tr>
 
       <tr>
@@ -208,43 +211,48 @@ tr:hover {
       </tr>
 
       </tr>
-      <tr></tr>
-
+      
       <tr>
-        <TD colspan="1">
-          INGRESO<input type="checkbox" value="INGRESO" class="check"></label><BR>
-          NOMBRAMIENTO<input type="checkbox" value="NOMBRAMIENTO" class="check"> </label><BR>
-          ASCENSO <input type="checkbox" value="ASCENSO" class="check"> </label><BR>
-          SUBROGACIO<input type="checkbox" value="SUBROGACIO" class="check"> </label><BR>
-          ENCARGO<input type="checkbox" value="ENCARGO" class="check"> </label><BR>
-          VACACIONES <input type="checkbox" value="VACACIONES" class="check">
+        <TD colspan="2">
+          INGRESO<input type="checkbox" name="tipo" value="INGRESO" class="check"></label><BR>
+          NOMBRAMIENTO<input type="checkbox" name="tipo" value="NOMBRAMIENTO" class="check"> </label><BR>
+          ASCENSO <input type="checkbox" name="tipo" value="ASCENSO" class="check"> </label><BR>
+          SUBROGACION<input type="checkbox" name="tipo" value="SUBROGACION" class="check"> </label><BR>
+          ENCARGO<input type="checkbox" name="tipo" value="ENCARGO" class="check"> </label><BR>
+          DESIGNACION DE ACTIVIDADES<input type="checkbox" name="tipo" value="DESIGNACION DE ACTIVIDADES" class="check"> </label><BR>
+          DESIGNACION DE FUNCIONES<input type="checkbox" name="tipo" value="DESIGNACION DE FUNCIONES" class="check"> </label><BR>
+          VACACIONES <input type="checkbox" name="tipo" value="VACACIONES" class="check">
         </TD>
 
         <TD colspan="1">
-          TRASLADO <input type="checkbox" value="TRASLADO" class="check"> </label><BR>
-          TRASPASO <input type="checkbox" value="TRASPASO" class="check"> </label><BR>
-          CAMBIO ADMINISTRATIVO<input type="checkbox" value="CAMBIO ADMINISTRATIVO" class="check"> </label><BR>
-          INTERCAMBIO <input type="checkbox" value="INTERCAMBIO" class="check"> </label><BR>
-          COMISIÓN DE SERVICIOS <input type="checkbox" value="COMISIÓN DE SERVICIOS" class="check"> </label><BR>
-          LICENCIA <input type="checkbox" value="LICENCIA" class="check"> </label>
+          TRASLADO <input type="checkbox" name="tipo" value="TRASLADO" class="check"> </label><BR>
+          TRASPASO <input type="checkbox" name="tipo" value="TRASPASO" class="check"> </label><BR>
+          CAMBIO ADMINISTRATIVO<input type="checkbox" name="tipo" value="CAMBIO ADMINISTRATIVO" class="check"> </label><BR>
+          INTERCAMBIO <input type="checkbox" name="tipo" value="INTERCAMBIO" class="check"> </label><BR>
+          COMISIÓN DE SERVICIOS <input type="checkbox" name="tipo" value="COMISIÓN DE SERVICIOS" class="check"> </label><BR>
+          AMONESTACION ESCRITA <input type="checkbox" name="tipo" value="AMONESTACION ESCRITA" class="check"> </label><BR>
+          AMONESTACION VERBAL <input type="checkbox" name="tipo" value="AMONESTACION VERBAL" class="check"> </label><BR>
+          LICENCIA <input type="checkbox" name="tipo" value="LICENCIA" class="check"> </label>
         </TD>
 
-        <TD colspan="7">
-          REVALORIZACIÓN<input type="checkbox" value="REVALORIZACIÓN" class="check"><BR>
-          RECLASIFICACIÓN<input type="checkbox" value="RECLASIFICACIÓN" class="check"><BR>
-          UBICACIÓN<input type="checkbox" value="UBICACIÓN" class="check"><BR>
-          REINTEGRO<input type="checkbox" value="REINTEGRO" class="check"><BR>
-          RESTITUCIÓN<input type="checkbox" value="RESTITUCIÓN" class="check"><BR>
-          RENUNCIA <input type="checkbox" value="RENUNCIA" class="check">
+        <TD colspan="5">
+          FORMALIZAR ACTIVIDADES DE APOYO<input type="checkbox" name="tipo" value="FORMALIZAR ACTIVIDADES DE APOYO" class="check"><BR>
+          REVALORIZACIÓN<input type="checkbox" name="tipo" value="REVALORIZACIÓN" class="check"><BR>
+          RECLASIFICACIÓN<input type="checkbox" name="tipo" value="RECLASIFICACIÓN" class="check"><BR>
+          UBICACIÓN<input type="checkbox" name="tipo" value="UBICACIÓN" class="check"><BR>
+          REINTEGRO<input type="checkbox" name="tipo" value="REINTEGRO" class="check"><BR>
+          RESTITUCIÓN<input type="checkbox" name="tipo" value="RESTITUCIÓN" class="check"><BR>
+          RENUNCIA <input type="checkbox" name="tipo" value="RENUNCIA" class="check"><br>
+          SANCION PECUNIARIA <input type="checkbox" name="tipo" value="SANCION PECUNIARIA" class="check">
         </TD>
 
-        <TD colspan="3">
-          SUPRESIÓN <input type="checkbox" value="SUPRESIÓN" class="check"><BR>
-          DESTITUCIÓN<input type="checkbox" value="DESTITUCIÓN" class="check"><BR>
-          REMOCIÓN<input type="checkbox" value="REMOCIÓN" class="check"><BR>
-          JUBILACIÓN<input type="checkbox" value="JUBILACIÓN" class="check"><BR>
-          PERMISO IMPUTABLE VACACIONES<input type="checkbox" value="PERMISO IMPUTABLE VACACIONES" class="check"><BR>
-          OTRO <input type="checkbox" value="OTRO" class="check"><BR>
+        <TD colspan="4">
+          SUPRESIÓN <input type="checkbox" name="tipo" value="SUPRESIÓN" class="check"><BR>
+          DESTITUCIÓN<input type="checkbox" name="tipo" value="DESTITUCIÓN" class="check"><BR>
+          REMOCIÓN<input type="checkbox" name="tipo" value="REMOCIÓN" class="check"><BR>
+          JUBILACIÓN<input type="checkbox" name="tipo" value="JUBILACIÓN" class="check"><BR>
+          PERMISO IMPUTABLE VACACIONES<input type="checkbox" name="tipo" value="PERMISO IMPUTABLE VACACIONES" class="check"><BR>
+          OTRO <input type="checkbox" name="tipo" value="OTRO" class="check"><BR>
 
         </TD>
       </tr>
@@ -280,41 +288,48 @@ tr:hover {
       </tr>
 
       <tr>
-        <tD style="text-align:center" colspan="5">ACTA FINAL DEL CONCURSO<BR><BR>
+        <tD style="text-align:center" colspan="3">ACTA FINAL DEL CONCURSO<BR><BR>
           No. _________ Fecha: _________</td>
-        <tD style="text-align:center; " colspan="7">PROCESO DE TALENTO HUMANO <BR><BR> f.
-          __________________________<br> <input type="text" id="jefa1" name="proc_talent"
-            placeholder="JEFA ENCARGADA"><BR>UNIDAD DE TALENTO HUMANO</td>
+        <tD style="text-align:center; " colspan="9">PROCESO DE TALENTO HUMANO <BR><BR> f.
+          __________________________<br> <input type="text" onkeypress="return permite(event, 'car')" id="jefa1" name="jencargada"
+            placeholder="JEFA ENCARGADA" required value="MSc. Mayra Sánchez Pisco"><BR>UNIDAD DE TALENTO HUMANO</td>
       </tr>
 
       <TR>
-        <tD style="text-align:center; " colspan="12">DIOS, PATRIA Y LIBERTAD <BR><BR>
-          f. __________________________<br> <input type="text" id="jefa2" name="dios" placeholder="JEFE CUALQUIERA"></td>
+        <tD style="text-align:center" colspan="12">DIOS, PATRIA Y LIBERTAD <BR><BR>
+          f. __________________________<br> <input style="width : 190px"  type="text" onkeypress="return permite(event, 'car')" id="jefa2" name="jencargada2" placeholder="JEFE CUALQUIERA" required value="DRA. MARILYN CRUZ BEDÓN" ></td>
       </tr>
 
       <TR>
-        <tD style="text-align:center" colspan="12"><input type="text" id="jefa3" name="dios"
-            placeholder="ENCARGADO AUTORIDAD NOMINADORA">
+        <tD style="text-align:center" onkeypress="return permite(event, 'car')" colspan="12"><input  style="width : 180px" type="text" id="jefa3" name="jencargada3"
+            placeholder="PUESTO" required value="AUTORIDAD NOMINADORA">
       </tr>
 
       <tr>
-        <tD style="text-align:center; " colspan="4">TALENTO HUMANO<BR><BR>
+        <tD style="text-align:center; " colspan="3">TALENTO HUMANO<BR><BR>
           <span id="codigoyfecha"></span>
         </td>
-        <tD style="text-align:center; " colspan="4"><BR><BR><BR> f. ___________________<br>
-          <input type="text" id="usuario1" name="resp_regis" placeholder="persona que hace login">
+        <tD style="text-align:center; " colspan="5"><BR><BR><BR> f. ___________________<br>
+          <input type="text" id="usuario1" name="usuario" placeholder="persona que hace login">
         </td>
         <tD style="text-align:center" colspan="4"><BR><BR><BR> f. ___________________<br><BR>SERVIDOR</td>
 
-
-    </table><BR>
+      <tr>
+            <tD style="text-align:center; " colspan="12">Fecha de creacion de formato: 2014-05-27  /  Revision:00  /  Pagina 1 de 2</tD>
+      </tr>               
+        
+          </table><BR>
     <div class="btnEnviar">
-      <button type="submit" class="btn btn-primary">IMPRIMIR</button>
+      <button type="button" class="btn btn-primary">IMPRIMIR</button>
       <button type="submit" class="btn btn-primary">GUARDAR</button>
     </div>
   </section>
-  <input type="hidden" id="iduser" value="<%=id%>">
 
+  <input type="hidden" id="iduser" name="user" value="<%=id%>">
+  <input type="hidden" id="idsolicitud" name="idSol" value="" >
+  <input type="hidden" id="fecha" name="fecha" value="">
+  <input type="hidden" id="abreviatura" name="abreviatura" value="">
+</form>
   <script src="/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
@@ -324,30 +339,38 @@ tr:hover {
     const id = document.getElementById('iduser');
 
 
+function des(val,title){
+  var des='EXPLICACIÒN: (Opcional:Adjuntar Anexo '+title+'<br> ' +
+                ' La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. <input type="text" style="width : 200px" id="memo" placeholder="art" ' +
+                ' name="art1"> de la ' +
+                'Ley Organica del Servicio Publico, y en concordancia con el Art. 28 del Reglamento a la LOSEP, se concede ' +
+                '<input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="'+val+'">, segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" ' +
+                ' name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">. </p>';
+    return des;
+}
 
 
-
-    fetch("http://localhost:3000/consulta/" + id.value)
+    fetch("http://localhost:3000/empleado/consulta/" + id.value)
       .then(response => response.json())
       .then(user => {
 
-        
+        console.log(user)
         let nomEmpleado1 = document.getElementById('nomEmpleado1');
-        nomEmpleado1.textContent = user[0].apellidos.toUpperCase() + ' ' + user[0].nombres.toUpperCase();
+        nomEmpleado1.textContent = user.apellidos.toUpperCase() + ' ' + user.nombres.toUpperCase();
         let cedula1 = document.getElementById('cedula1');
-        cedula1.textContent = user[0].cedula;
+        cedula1.textContent = user.cedula;
         let proceso1 = document.getElementById('proceso1');
-        proceso1.textContent = user[0].proceso;
+        proceso1.textContent = user.proceso;
         let subproceso1 = document.getElementById('subproceso1');
-        subproceso1.textContent = user[0].subproceso;
+        subproceso1.textContent = user.subproceso;
         let puesto1 = document.getElementById('puesto1');
-        puesto1.textContent = user[0].puesto;
+        puesto1.textContent = user.puesto;
         let ltrabajo1 = document.getElementById('ltrabajo1');
-        ltrabajo1.textContent = user[0].l_trabajo;
+        ltrabajo1.textContent = user.l_trabajo;
         let remuneracion1 = document.getElementById('remuneracion1');
-        remuneracion1.textContent = user[0].rmu;
+        remuneracion1.textContent = user.rmu;
         let partida1 = document.getElementById('partida1');
-        partida1.textContent = '202104700000000010000000200051200000100000000 - ' + user[0].partida;
+        partida1.textContent = '202104700000000010000000200051200000100000000 - ' + user.partida;
         
 
 
@@ -361,64 +384,226 @@ tr:hover {
           checkboxs[i].addEventListener("click", function () {
             //Aquí la función que se ejecutará cuando se dispare el evento
             //alert(this.value); //En este caso alertaremos el texto del cliqueado
-
+            
             if (this.value == 'VACACIONES') {
               document.getElementById('contentCheck').innerHTML = 'EXPLICACIÒN: (Opcional:Adjuntar Anexo<br>' +
-                ' La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. 29 de la ' +
+                ' La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art.<input readonly value="29" type="text" style="width : 200px" id="memo" placeholder="art" name="art1">  de la ' +
                 'Ley Organica del Servicio Publico, y en concordancia con el Art. 28 del Reglamento a la LOSEP, se concede ' +
-                'VACACIONES, segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" ' +
-                ' name="memo"> de fecha <input type="date" id="funitalento" name="funitalento" placeholder="fecha">. </p>';
+                '<input type="text" id="funitalento" name="motivo" placeholder="motivo" readonly value="VACACIONES">, segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" ' +
+                ' name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">. </p>';
+                'Referencia:'+
+                'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'PERMISO IMPUTABLE VACACIONES') {
               document.getElementById('contentCheck').innerHTML = 'EXPLICACIÒN: (Opcional:Adjuntar Anexo<br> ' +
-                'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. 34 de la Ley Organica del ' +
-                'Servicio Publico, y en concordancia con el Art. 65 del Reglamento a la LOSEP, se concede PERMISO IMPUTABLE A VACACIONES,' +
-                ' segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memo"> de fecha <input' +
-                ' type="date" id="funitalento" name="funitalento" placeholder="fecha">. </p>';
+                'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del ' +
+                'Servicio Publico, y en concordancia con el Art. 65 del Reglamento a la LOSEP, se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="PERMISO IMPUTABLE A VACACIONES">,' +
+                ' segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input' +
+                ' type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">. </p>';
+                'Referencia:'+
+                'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'INGRESO') {
-              document.getElementById('contentCheck').innerHTML = 'INGRESO';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) INGRESO<br>'+ 
+              'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. 48 literal <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit1">'+
+              'de la Ley Orgánica del Servicio Público, y en concordancia con el Art. <input readonly type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> del Reglamento a la LOSEP,'+
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="INGRESO">, conforme <input type="text" id="funitalento" name="conforme" placeholder="conforme" value="">  adjunto en el Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">. </p>';
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'NOMBRAMIENTO') {
-              document.getElementById('contentCheck').innerHTML = 'NOMBRAMIENTO';
+              document.getElementById('contentCheck').innerHTML = des(this.value,'NOMBRAMIENTO');
             } else if (this.value == 'ASCENSO') {
-              document.getElementById('contentCheck').innerHTML = 'ASCENSO';
-            } else if (this.value == 'SUBROGACIO') {
-              document.getElementById('contentCheck').innerHTML = 'SUBROGACIO';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) ASCENSO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="PERMISO IMPUTABLE A VACACIONES">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
+            } else if (this.value == 'SUBROGACION') {
+              document.getElementById('contentCheck').innerHTML ='EXPLICACIÓN: (Opcional:Adjuntar Anexo) SUBROGACION<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="SUGROGACION">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha<input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'ENCARGO') {
-              document.getElementById('contentCheck').innerHTML = 'ENCARGO';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) ENCARGO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="ENCARGO">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
+            } else if (this.value == 'DESIGNACION DE FUNCIONES') {
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) DESIGNACIÓN DE ACTIVIDADES<br>'+
+              'La Directora Ejecutiva de la ABG en uso de sus atribuciones RESUELVE: desigar como apoyo en el <input  type="text" id="funitalento" name="apoyo" placeholder="lugar" value="">'+
+              'a la persona  <input  type="text" id="funitalento" name="persona" placeholder="nombre" value="">, ocupante del puesto que se explica en el casillero situación actual, según Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando">de fecha ' +
+              '<input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.'+
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
+            } else if (this.value == 'AMONESTACION ESCRITA') {
+              document.getElementById('contentCheck').innerHTML ='EXPLICACIÓN: (Opcional:Adjuntar Anexo) AMONESTACIÓN ESCRITA<br>'+
+              'La Directora Ejecutiva de la ABG en uso de sus facultades; una vez que se ha cumplido en el orden jurídico vigente y en cumplimiento con el art <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la LOSEP'+
+              'en concordancia con lo dispuesto en el Art. 81 y 82 del Reglamento General de la Ley Orgánica del Servidor Público, conforme a la Resolución <input  value="" type="text" style="width : 200px" id="memo" placeholder="resolucion" name="resolucion">, se aplica la amonestación escrita al servidor <input  value="" type="text" style="width : 200px" id="memo" placeholder="nombre" name="servidor">'+
+              'de los atrasos del mes de <input  value="" type="text" style="width : 200px" id="memo" placeholder="mes" name="mes">, por incumplir lo establecido en la LOSEP art. <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> literal <input  value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit1">, y lo estipulados en los articulos <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art3"> literal <input  value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit2">'+
+              'y en el art. <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art4"> del Reglamento interno de la Administración de Talento Humano para los servidores y funcionarios de la Agencia de Regulación y Control de la Bioseguridad y Cuarentena para Galápagos-ABG.'+
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
+            } else if (this.value == 'AMONESTACION VERBAL') {
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) AMONESTACIÓN VERBAL<br>'+ 
+              'La Directora Ejecutiva de la ABG en uso de sus facultades; una vez que se ha cumplido en el orden jurídico vigente y en cumplimiento con el art <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la LOSEP'+
+              'en concordancia con lo dispuesto en el Art. <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> y <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art3"> del Reglamento General de la Ley Orgánica del Servidor Público, conforme a la Resolución No. <input  value="" type="text" style="width : 200px" id="memo" placeholder="resolucion" name="resolucion">,'+
+              'se aplica la amonestación verbal al servidor <input  value="" type="text" style="width : 200px" id="memo" placeholder="nombre" name="persona"> del día <input  value="" type="text" style="width : 200px" id="memo" placeholder="nombre" name="fechaMotivo">, por incumplir lo establecido en la LOSEP art. <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art4"> literal <input  value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit1">,'+
+              'y lo estipulados en los articulos <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art2"> literal <input  value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit2"> y en el art. <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art5"> del Reglamento interno de la Administración de Talento Humano para los servidores y funcionarios de la Agencia de Regulación y Control de la Bioseguridad y Cuarentena para Galápagos-ABG.'+
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
+            } else if (this.value == 'DESIGNACION DE ACTIVIDADES') {
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) DESIGNACIÓN DE ACTIVIDADES<br>'+
+              'La Directora Ejecutiva de la ABG en uso de sus atribuciones RESUELVE: desigar como apoyo en el <input type="text" id="funitalento" name="apoyo" placeholder="lugar" value="">'+
+              'a la persona <input type="text" id="funitalento" name="persona" placeholder="nombre" value="">, ocupante del puesto que se explica en el casillero situación actual, según Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando">de fecha ' +
+              '<input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.'+
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
+            } else if (this.value == 'SANCION PECUNIARIA') {
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) SANSION PECUNIARIA<br>'+
+              'La Directora Ejecutiva de la ABG en uso de sus facultades; de acuerdo a lo establecido en el Art. 84 del Reglamento General de la Ley Orgánica del Servidor Público,'+
+              'en concordancia con el Art. 87, lietral(e) Reglamento interno de la Administración de Talento Humano para los servidores y funcionarios de la Agencia de Regulación y Control de la Bioseguridad y Cuarentena para Galápagos-ABG.,'+
+              'y una vez que se ha cumplido el procedimiento previsto en el ordenamiento jurídico vigente en cumplimiento con el articulo 42 de la LOSEP y en conformidad con la Resolución No. <input  value="" type="text" style="width : 200px" id="memo" placeholder="resolucion" name="resolucion"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">,'+
+              'se aplica sanción pecuniaria administrativa del <input type="text" style="width : 200px" id="memo" placeholder="valor" name="valor">% de su remuneración, por incumplimiento de lo establecido en la LOSEP art. <input type="text"> literal <input type="text"> y lo establecido en los articulos <input type="text">'+
+              'literal <input type="text"> y <input type="text"> Reglamento General de la Ley Orgánica del Servidor Público, conforme a la Resolución No. <input  value="" type="text" style="width : 200px" id="memo" placeholder="resolucion" name="resolucion2">, se aplica la amonestación verbal al servidor <input type="text" class="selfadapt"> del día <input type="date">,'+
+              'por incumplir lo establecido en la LOSEP art. <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> literal <input  value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit1">, y lo estipulados en los articulos <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art2"> literal <input  value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit2"> y en el art. <input  value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art4"> del Reglamento interno de la Administración de Talento Humano para los servidores y funcionarios de la Agencia de Regulación y Control de la Bioseguridad y Cuarentena para Galápagos-ABG.'
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'TRASLADO') {
-              document.getElementById('contentCheck').innerHTML = 'TRASLADO';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) TRASLADO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'TRASPASO') {
-              document.getElementById('contentCheck').innerHTML = 'TRASPASO';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) TRASPASO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'CAMBIO ADMINISTRATIVO') {
-              document.getElementById('contentCheck').innerHTML = 'CAMBIO ADMINISTRATIVO';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) CAMBIO ADMINISTRATIVO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'INTERCAMBIO') {
-              document.getElementById('contentCheck').innerHTML = 'INTERCAMBIO';
+              
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) TRASPASO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'COMISIÓN DE SERVICIOS') {
-              document.getElementById('contentCheck').innerHTML = 'COMISIÓN DE SERVICIOS';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) TRASPASO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'LICENCIA') {
-              document.getElementById('contentCheck').innerHTML = 'LICENCIA';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) LICENCIA<br>' 
+              'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1">'+
+              'de la Ley Orgánica del Servicio Público, y en concordancia con el Art. <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> literal <input  type="text" style="width:40px" placeholder="lit" name="lit1"> del Reglamento a la LOSEP,'+
+              'se concede LICENCIA <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">, conforme <input readonly type="text" id="funitalento" name="conforme" placeholder="conforme" value="">  adjunto en el Memorando Nro. <input type="text" value="" class="selfadapt" placeholder"memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.';
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'REVALORIZACIÓN') {
-              document.getElementById('contentCheck').innerHTML = 'REVALORIZACIÓN';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) TRASPASO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'RECLASIFICACIÓN') {
-              document.getElementById('contentCheck').innerHTML = 'RECLASIFICACIÓN';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) TRASPASO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'UBICACIÓN') {
-              document.getElementById('contentCheck').innerHTML = 'UBICACIÓN';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) TRASPASO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'REINTEGRO') {
-              document.getElementById('contentCheck').innerHTML = 'REINTEGRO';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) TRASPASO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'RESTITUCIÓN') {
-              document.getElementById('contentCheck').innerHTML = 'RESTITUCIÓN';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) TRASPASO<br> ' +
+              'La Directora Ejecutiva de la ABG, en uso de sus facultades y de conformidad con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la Ley Organica del Servicio Publico,' +
+              'y en concordancia con el Art. <input readonly value="34" type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP' +
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">,' +
+              'segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.' +
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2">';
             } else if (this.value == 'RENUNCIA') {
-              document.getElementById('contentCheck').innerHTML = 'RENUNCIA';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) RENUNCIA<br>'+ 
+              'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> literal <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit1">'+
+              'de la Ley Orgánica del Servicio Público, y en concordancia con el Art. <input readonly type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP,'+
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">, conforme <input readonly type="text" id="funitalento" name="conforme" placeholder="conforme" value="">  adjunto en el Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">.';
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'SUPRESIÓN') {
-              document.getElementById('contentCheck').innerHTML = 'SUPRESIÓN';
-            }
-            else if (this.value == 'DESTITUCIÓN') {
-              document.getElementById('contentCheck').innerHTML = 'DESTITUCIÓN';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) SUPRESION<br>'+ 
+              'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> literal <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit1">'+
+              'de la Ley Orgánica del Servicio Público, y en concordancia con el Art. <input readonly type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP,'+
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">, conforme <input readonly type="text" id="funitalento" name="conforme" placeholder="conforme" value="">  adjunto en el Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">. </p>';
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
+            } else if (this.value == 'DESTITUCIÓN') {
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) DESTITUCION<br>'+ 
+              'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> literal <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit1">'+
+              'de la Ley Orgánica del Servicio Público, y en concordancia con el Art. <input readonly type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP,'+
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">, conforme <input readonly type="text" id="funitalento" name="conforme" placeholder="conforme" value="">  adjunto en el Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">. </p>';
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'REMOCIÓN') {
-              document.getElementById('contentCheck').innerHTML = 'REMOCIÓN';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) REMOCION<br>'+ 
+              'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> literal <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit1">'+
+              'de la Ley Orgánica del Servicio Público, y en concordancia con el Art. <input readonly type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP,'+
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">, conforme <input readonly type="text" id="funitalento" name="conforme" placeholder="conforme" value="">  adjunto en el Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">. </p>';
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'JUBILACIÓN') {
-              document.getElementById('contentCheck').innerHTML = 'JUBILACIÓN';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) DESTITUCION<br>'+ 
+              'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> literal <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit1">'+
+              'de la Ley Orgánica del Servicio Público, y en concordancia con el Art. <input readonly type="text" style="width : 200px" id="memo" placeholder="art" name="art"> del Reglamento a la LOSEP,'+
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">, conforme <input readonly type="text" id="funitalento" name="conforme" placeholder="conforme" value="">  adjunto en el Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">. </p>';
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             } else if (this.value == 'OTRO') {
-              document.getElementById('contentCheck').innerHTML = 'OTRO';
+              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÓN: (Opcional:Adjuntar Anexo) OTRO<br>'+ 
+              'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> literal <input readonly value="" type="text" style="width : 200px" id="memo" placeholder="literal" name="lit1">'+
+              'de la Ley Orgánica del Servicio Público, y en concordancia con el Art. <input readonly type="text" style="width : 200px" id="memo" placeholder="art" name="art"> literal <input readonly type="text" style="width:200px" id="memo" placeholder="literal" name="lit2"> del Reglamento a la LOSEP,'+
+              'se concede <input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="">, conforme <input readonly type="text" id="funitalento" name="conforme" placeholder="conforme" value="">  adjunto en el Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">. </p>';
+              'Referencia:'+
+              'Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memorando2"></p>';
             }
             for (var j = 0; j < checkboxs.length; j++) {
 
@@ -430,97 +615,29 @@ tr:hover {
           });
         }
 
-        if (user[0].idSolicitud.trim() != '') {
-          fetch("http://localhost:3000/consultavacaciones/" + user[0].idSolicitud)
+        if (user.idSolicitud.trim() != '') {
+          fetch("http://localhost:3000/solicitud/consultavacaciones/" + user.idSolicitud)
             .then(response =>  response.json() )
             .then(sol => {//No. <br>ABG-UAH-ACP-2021- numero secuencial ejemplo (001vac)
-              document.getElementById('codigoSec').textContent=sol[0].codigoSec;
+              document.getElementById('codigoSec').value=sol[0].codigoSec;
               document.getElementById('fdesde').value=sol[0].fdesde;
               document.getElementById('fhasta').value=sol[0].fhasta;
+              document.getElementById('idsolicitud').value=sol[0]._id;
+              document.getElementById('fecha').value = sol[0].fecha;
+              document.getElementById('abreviatura').value=sol[0].abreviatura
               
             for (var i = 0; i < checkboxs.length; i++) {
               if (checkboxs[i].value == sol[0].tipo) {
+                //alert(checkboxs[i].value)
+
                 checkboxs[i].checked = 1;
+                document.getElementById('abreviatura').value=sol[0].abreviatura
               document.getElementById('contentCheck').innerHTML = 'EXPLICACIÒN: (Opcional:Adjuntar Anexo<br>' +
-                ' La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. 29 de la ' +
+                ' La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art.<input readonly value="29" type="text" style="width : 200px" id="memo" placeholder="art" name="art1">  de la ' +
                 'Ley Organica del Servicio Publico, y en concordancia con el Art. 28 del Reglamento a la LOSEP, se concede ' +
-                'VACACIONES, segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" ' +
-                ' name="memo"> de fecha <input type="date" id="funitalento" name="funitalento" placeholder="fecha">. </p>';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'EXPLICACIÒN: (Opcional:Adjuntar Anexo<br> ' +
-                'La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. 34 de la Ley Organica del ' +
-                'Servicio Publico, y en concordancia con el Art. 65 del Reglamento a la LOSEP, se concede PERMISO IMPUTABLE A VACACIONES,' +
-                ' segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" name="memo"> de fecha <input' +
-                ' type="date" id="funitalento" name="funitalento" placeholder="fecha">. </p>';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'INGRESO';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'NOMBRAMIENTO';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'ASCENSO';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'SUBROGACIO';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'ENCARGO';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'TRASLADO';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'TRASPASO';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'CAMBIO ADMINISTRATIVO';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'INTERCAMBIO';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'COMISIÓN DE SERVICIOS';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'LICENCIA';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'REVALORIZACIÓN';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'RECLASIFICACIÓN';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'UBICACIÓN';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'REINTEGRO';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'RESTITUCIÓN';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'RENUNCIA';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'SUPRESIÓN';
-            }
-            else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'DESTITUCIÓN';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'REMOCIÓN';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'JUBILACIÓN';
-            } else if (checkboxs[i].value == sol[0].tipo) {
-              checkboxs[i].checked = 1;
-              document.getElementById('contentCheck').innerHTML = 'OTRO';
-            }
+                '<input type="text" id="funitalento" readonly name="motivo" placeholder="motivo" value="'+sol[0].tipo+'">, segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" ' +
+                ' name="memorando"value="'+sol[0].memorando+'"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha" value="'+sol[0].fechaMotivo+'">. </p>';
+            } 
             }
             document.getElementById('jefa1').value=sol[0].jencargada;
             document.getElementById('jefa2').value=sol[0].jencargada2;
@@ -535,19 +652,22 @@ tr:hover {
         let now = moment();
         let fecha = now.format('LL')
         document.getElementById('fechaAutomtica1').textContent = fecha;
+        document.getElementById('fecha').value = fecha;
     
        
        for (var i = 0; i < checkboxs.length; i++) {
+        checkboxs[i].checked = 0;
               if (checkboxs[i].value == 'VACACIONES') {
-                
+               
                 checkboxs[i].checked = 1;
+                document.getElementById('abreviatura').value=checkboxs[i].value
               document.getElementById('contentCheck').innerHTML = 'EXPLICACIÒN: (Opcional:Adjuntar Anexo<br>' +
-                ' La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. 29 de la ' +
+                ' La Directora Ejecutiva de la ABG en uso de sus facultades y de conformidad con el Art. <input readonly value="29" type="text" style="width : 200px" id="memo" placeholder="art" name="art1"> de la ' +
                 'Ley Organica del Servicio Publico, y en concordancia con el Art. 28 del Reglamento a la LOSEP, se concede ' +
-                'VACACIONES, segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" ' +
-                ' name="memo"> de fecha <input type="date" id="funitalento" name="funitalento" placeholder="fecha">. </p>';
-                document.getElementById('codigoSec').textContent="N°. ABG-UAH-ACP-2021-001vac";
-                document.getElementById('codigoyfecha').textContent= 'N°. ABG-UAH-ACP-2021-001vac Fecha: ' + fecha;
+                '<input readonly type="text" id="funitalento" name="motivo" placeholder="motivo" value="'+checkboxs[i].value+'">, segun Memorando Nro. <input type="text" style="width : 200px" id="memo" placeholder="memorando" ' +
+                ' name="memorando"> de fecha <input type="date" id="funitalento" name="fechaMotivo" placeholder="fecha">. </p>';
+                
+                document.getElementById('codigoyfecha').textContent= ' Fecha: ' + fecha;
             } 
         }
       }

@@ -25,19 +25,17 @@ function menuBtnChange() {
 var dat=[]
 
 
-fetch("http://localhost:3000/consulta/")
+fetch("http://localhost:3000/empleado/consulta")
   .then(response => response.json())
   .then(json => {
    
     dat=json
-    console.log(dat)
-    
-    
+  // console.log(dat)    
   })
   const tbody=document.getElementById('tbody');
   const buscar=document.getElementById('InpBuscar');
   buscar.addEventListener('keyup',function(){
-    
+  
   tbody.innerHTML=""
   var band=false;
   for(var i=0;i<dat.length;i++){
@@ -47,18 +45,18 @@ fetch("http://localhost:3000/consulta/")
     var cedula=dat[i].cedula.toUpperCase()
     var rol=dat[i].idRoles.toUpperCase()
     if(buscar.value.toUpperCase().trim() ===''){
-     
+ 
       const tr=document.createElement("tr");
       const td=document.createElement("td");
       td.className="acciones"
       const a1=document.createElement("a");
       a1.title="Editar Empleado";
-      a1.href="http://localhost:3000/gestion-empleado/"+dat[i]._id
+      a1.href="http://localhost:3000/empleado/gestion-empleado/"+dat[i]._id
       const i1=document.createElement("i");
       i1.className="bx bx-edit";
       const a2=document.createElement("a");
       a2.title="Solicitud Vacaciones";
-      a2.href="http://localhost:3000/solicitud_vacaciones/"+dat[i]._id
+      a2.href="http://localhost:3000/solicitud/solicitud_vacaciones/"+dat[i]._id
       const i2=document.createElement("i");
       i2.className="bx bxs-file-doc";
       a1.appendChild(i1)
@@ -119,12 +117,12 @@ fetch("http://localhost:3000/consulta/")
       td.className="acciones"
       const a1=document.createElement("a");
       a1.title="Editar Empleado";
-      a1.href="http://localhost:3000/gestion-empleado/"+dat[i]._id
+      a1.href="http://localhost:3000/empleado/gestion-empleado/"+dat[i]._id
       const i1=document.createElement("i");
       i1.className="bx bx-edit";
       const a2=document.createElement("a");
       a2.title="Solicitud Vacaciones";
-      a2.href="http://localhost:3000/solicitud_vacaciones/"+dat[i]._id
+      a2.href="http://localhost:3000/solicitud/solicitud_vacaciones/"+dat[i]._id
       const i2=document.createElement("i");
       i2.className="bx bxs-file-doc";
       a1.appendChild(i1)
@@ -190,5 +188,4 @@ if(!band){
   tbody.appendChild(trr)
 }
 })
-
 

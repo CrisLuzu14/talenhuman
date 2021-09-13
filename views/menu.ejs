@@ -29,7 +29,7 @@
       </li>
       
       <li>
-       <a href="http://localhost:3000/empleados2">
+       <a href="http://localhost:3000/empleado/consultatodos">
          <i class='bx bx-user' ></i>
          <span class="links_name">Empleados</span>
        </a>
@@ -44,7 +44,10 @@
              <div class="job">Web designer</div>
            </div>
          </div> 
-         <i class='bx bx-log-out' id="log_out" ></i>
+         <a class="logout" href="http://localhost:3000/logout">
+          <i class='bx bx-log-out' id="log_out" ></i>
+        </a>
+        
      </li>
     </ul>
   </div>
@@ -56,7 +59,7 @@
       <div class="grid">
         
         <div class="btnAdd">
-          <a title="Agregar nuevo empledo" href="http://localhost:3000/gestion-empleado/"><i class='bx bxs-user-plus' ></i></a>
+          <a title="Agregar nuevo empledo" href="http://localhost:3000/empleado/gestion-empleado/"><i class='bx bxs-user-plus' ></i></a>
         </div>
         <div class="buscador">
           <input id="InpBuscar" type="text" placeholder="Buscar por ">
@@ -82,8 +85,8 @@
             <% for(var i=0;i < usu.length ;i++){ %>
               
               <tr>
-                <td class="acciones"><a title="Editar Empleado" href="http://localhost:3000/gestion-empleado/<%=usu[i]._id%>"><i class='bx bx-edit'></i></a>
-                  <a title="Solicitud Vacaciones" href="http://localhost:3000/solicitud_vacaciones/<%=usu[i]._id%>"><i class='bx bxs-file-doc' ></i></a>
+                <td class="acciones"><a title="Editar Empleado" href="http://localhost:3000/empleado/gestion-empleado/<%=usu[i]._id%>"><i class='bx bx-edit'></i></a>
+                  <a title="Solicitud Vacaciones" href="http://localhost:3000/solicitud/solicitud_vacaciones/<%=usu[i]._id%>"><i class='bx bxs-file-doc' ></i></a>
                 </td>
                 <td class="Capitalize"><%=usu[i].cedula%></td>
                 <td class="Capitalize"><%=usu[i].idRoles%></td>
